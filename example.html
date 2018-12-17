@@ -15,7 +15,7 @@
 var audioContext = window.AudioContext || window.webkitAudioContext;
 var mystatus = document.getElementById('result');
 var timeout_id;
-var context = new audioContext(); 
+var context; 
 var analyser;
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 function onSuccess(stream){
@@ -155,6 +155,7 @@ function onError(){
 };
 var btn = document.getElementById('btn');
 btn.onclick = () => {
+  context = new audioContext()
   navigator.getUserMedia({audio: true}, onSuccess, onError);
   test();
   btn.style.display = 'none';
